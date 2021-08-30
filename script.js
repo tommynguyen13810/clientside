@@ -7,7 +7,7 @@ $("#getuser").on("click", async (e) => {
         const userdata = await user.json()
         console.log(userdata)
         for(let i = 0; i < userdata.length; i++) {
-            $("body").append(`<p>The user is ${userdata[i].name} with dob ${userdata[i].dob}<p>`)
+            $("body").append(`<p>The user is ${userdata[i].name} with dob ${userdata[i].dob}, watching: ${userdata[i].stock}<p>`)
         }
     }
     catch(e) {
@@ -54,7 +54,7 @@ $("#userbtn").on("click", async (e) => {
             method: 'GET',
             })
             const userdata = await user.json()
-            $("body").append(`<p>Created user ${userdata.name} with birthday ${userdata.dob}<p>`)
+            $("body").append(`<p>Created user ${userdata.name} with birthday ${userdata.dob} and id ${userdata._id}<p>`)
         }
     }
     catch(e) {
@@ -62,4 +62,24 @@ $("#userbtn").on("click", async (e) => {
         console.log(e)
     }
 }) 
+
+$("#stockbtn").on("click", async (e) => {
+    try{
+        if($("#id").val() == "" || $("#stock").val() == "" ) {
+            console.log("empty input")
+        }
+        else {
+            const data = {
+                id: `${$("#id").val()}`,
+                stock: `${$("#stock").val()}`
+            }
+            const user = await fetch(`http://localhost:3000/stock/add/${data.id}/${data.stock}`, {
+            method: 'GET',
+            })
+            const userdata = await user.json();
+        }
+    } catch(e) {
+
+    }
+})
 
