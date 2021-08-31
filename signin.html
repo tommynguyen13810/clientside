@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>User Login</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="custom.css">
+        <script src="jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="control.js"></script>
+    </head>
+    <body>
+        <div id="signinModal" class="text-center">
+            <div class="modal-dialog">
+                <div class="col-lg-10 col-sm-10 col-12 main-section">
+                    <div class="modal-content">
+                        <div class="col-lg-12 col-sm-12 col-12 user-img">
+                            <img src="image/man.png">
+                        </div>
+                        <div class="col-lg-12 col-sm-12 col-12 user-name">
+                            <h1>User Login</h1>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="col-lg-12 col-sm-12 col-12 form-input">
+                            <form id="signinForm" class="was-validated">
+                                <div class="form-group">
+                                    <input type="email" id="email" class="form-control" placeholder="E-mail adress" style="text-align: center;">
+                                    <span id="email_error" class="error"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" id="password" class="form-control" placeholder="Password" minlength="8" style="text-align: center;">
+                                    <span id="passsword_error" class="error"></span>
+                                </div>
+                                <button type="submit" id="signin" class="btn btn-success" disabled="true">Login</button>
+                            </form>
+                            <script type="text/javascript" src="control.js"></script>
+                        </div>
+                        <div class="col-lg-12 col-sm-12 col-12 link-part">
+                            <a href="">Forgot password ?</a> -- 
+                            <a href="">Signup</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
