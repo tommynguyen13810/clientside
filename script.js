@@ -1,5 +1,6 @@
 $("#getuser").on("click", async (e) => {
     try{
+        console.log("testing")
         $(".info").empty()
         const user = await fetch('http://localhost:3000/user/all', {
             method: 'GET',
