@@ -73,7 +73,7 @@ $("#signup").on("click", async (e) => {
             email: `${$("#email").val()}`,
             password: `${$("#password").val()}`
         }
-        const newUser = await fetch('http://localhost:3000/login', {
+        const newUser = await fetch('http://localhost:3000/user/signup', {
             method: 'POST',
             mode: 'cors',
             headers: {

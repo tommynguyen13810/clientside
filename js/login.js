@@ -73,7 +73,7 @@ $("#signin").on("click", async (e) => {
             email: `${$("#email").val()}`,
             password: `${$("#password").val()}`
         }
-        const newUser = await fetch('http://localhost:3000/login', {
+        const newUser = await fetch('http://localhost:3000/user/login', {
             method: 'POST',
             mode: 'cors',
             headers: {
@@ -82,8 +82,9 @@ $("#signin").on("click", async (e) => {
             body: JSON.stringify(data)
         })
         const datajson = await newUser.json()
-        if(datajson == "User already exists") {
-            $("#passsword_error").text("User Already Exists");
+        console.log(datajson)
+        if(datajson == "User does not exist") {
+            $("#passsword_error").text("User Does Not Exist");
         }
         else {
             storage = window.localStorage

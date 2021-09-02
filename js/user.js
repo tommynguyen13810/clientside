@@ -6,12 +6,11 @@ async function loadUserInfo() {
     
     try{
         const user = await fetch(`http://localhost:3000/user/${id}`, {
-                    method: 'GET',
-                })
+            method: 'GET',
+        })
         const userdata = await user.json()
-        for(let i = 0; i < userdata[0].stock.length; i++) {
-            $("#stocks").append(`<li>${userdata[0].stock[i]}</li>`)
-            console.log("appended")
+        for(let i = 0; i < userdata.stock.length; i++) {
+            $("#stocks").append(`<li>${userdata.stock[i]}</li>`)
         }
     
     }
