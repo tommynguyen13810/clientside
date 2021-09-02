@@ -85,6 +85,11 @@ $("#signin").on("click", async (e) => {
         if(datajson == "User already exists") {
             $("#passsword_error").text("User Already Exists");
         }
+        else {
+            storage = window.localStorage
+            storage.setItem('id', datajson._id)
+            window.location = '../views/user.html'
+        }
     }
     catch(e) {
         console.log("Error creating user")
