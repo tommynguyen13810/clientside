@@ -31,41 +31,6 @@ $("#deleteall").on("click", async (e) => {
     }
 })
 
-$("#userbtn").on("click", async (e) => {
-    try{
-        if($("#name").val() == "" || $("#dob").val() == "" ) {
-            console.log("empty input")
-            $(".info").empty()
-            $(".info").append(`<p>Empty Input<p>`)
-        }
-        else {
-            const data = {
-                name: `${$("#name").val()}`,
-                dob: `${$("#dob").val()}`
-            }
-            const newUser = await fetch('http://localhost:3000/user', {
-                method: 'POST',
-                mode: 'cors',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data)
-            })
-            const id = await newUser.json()
-            const user = await fetch(`http://localhost:3000/user/${id.id}`, {
-            method: 'GET',
-            })
-            const userdata = await user.json()
-            $(".info").empty()
-            $(".info").append(`<p>Created user ${userdata.name} with birthday ${userdata.dob} and id ${userdata._id}<p>`)
-        }
-    }
-    catch(e) {
-        console.log("Error creating user")
-        console.log(e)
-    }
-}) 
-
 $("#stockbtn").on("click", async (e) => {
     try{
         if($("#id").val() == "" || $("#stock").val() == "" ) {
@@ -74,11 +39,9 @@ $("#stockbtn").on("click", async (e) => {
             $(".info").append(`<p>Empty Input<p>`)
         }
         else {
-            const data = {
-                id: `${$("#id").val()}`,
-                stock: `${$("#stock").val()}`
-            }
-            const user = await fetch(`http://localhost:3000/stock/add/${data.id}/${data.stock}`, {
+            id = $("#id").val(),
+            stock = $("#stock").val()
+            const user = await fetch(`http://localhost:3000/stock/add/${id}/${stock}`, {
             method: 'GET',
             })
             const userdata = await user.json();

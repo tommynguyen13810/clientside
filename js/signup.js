@@ -10,8 +10,10 @@ $(function () {
         
         var email=$("#email").val();
         var password=$("#password").val();
+        var name=$("#name").val();
+        var dob=$("#dob").val();
         
-        if(emailRegex.test(email)==true && strongPwdRegex.test(password)==true)
+        if(emailRegex.test(email)==true && strongPwdRegex.test(password)==true && name && dob)
         {
             $("#signup").attr('disabled',false);
         }
@@ -20,7 +22,6 @@ $(function () {
             $("#signup").attr('disabled',true);
         }
     });
-    
     
     // To validate email entry
     $("#email").on("keyup", function (e) {
@@ -71,7 +72,9 @@ $("#signup").on("click", async (e) => {
         console.log("triggered")
         const data = {
             email: `${$("#email").val()}`,
-            password: `${$("#password").val()}`
+            password: `${$("#password").val()}`,
+            name: `${$("#name").val()}`,
+            dob:`${$("#dob").val()}`
         }
         const newUser = await fetch('http://localhost:3000/user/signup', {
             method: 'POST',
@@ -83,7 +86,7 @@ $("#signup").on("click", async (e) => {
         })
         const datajson = await newUser.json()
         if(datajson == "User already exists") {
-            $("#passsword_error").text("User Already Exists");
+            $("#passsword_error").text("User With Email Already Exists");
         }
         else {
             storage = window.localStorage

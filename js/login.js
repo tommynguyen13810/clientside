@@ -66,6 +66,7 @@ $(function () {
     
 });
 
+//sign in button, checks if user exists and pass is correct, then redirects to user page
 $("#signin").on("click", async (e) => {
     try{
         console.log("triggered")
@@ -84,7 +85,7 @@ $("#signin").on("click", async (e) => {
         const datajson = await newUser.json()
         console.log(datajson)
         if(datajson == "User does not exist") {
-            $("#passsword_error").text("User Does Not Exist");
+            $("#passsword_error").text("User Does Not Exist Or Info Is Incorrect");
         }
         else {
             storage = window.localStorage

@@ -9,10 +9,20 @@
 </head>
 <body>
     <h1>Hello User <span id="user"></span></h1>
-    <h2>Watching Current Stocks</h2>
-    <ul id="stocks"></ul>
-    <button class="btn btn-success">Add a Stock</button>
-    <button class="btn btn-secondary" onclick="window.location.href='./login.html'">Back to Login</button>
+    <hr>
+    <div class="stockinfo">
+        <h2>Watching Current Stocks</h2>
+        <ul id="stocks"></ul>
+        <button class="btn btn-success" id="addstock">Add New Stock</button>
+        <button class="btn btn-secondary" onclick="window.location.href='./login.html'">Back to Login</button>
+    </div>
+    <div class="stockadd" style="display:none"> 
+        <label for="stock">Stock</label>
+        <input type="text" id="stock" name="stock" placeholder="Stock">
+        <button class="btn btn-success" id="stockbtn">Submit</button>
+        <button class="btn btn-danger" id="cancel">Cancel</button>
+        <div class="info"></div>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
