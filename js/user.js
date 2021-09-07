@@ -1,7 +1,6 @@
 //gets id from prev login page or signup page
 storage = window.localStorage
 const id = storage.getItem('id')
-storage.removeItem('id')
 
 //shows adding stock menu
 $("#addstock").on("click", (e) => {
@@ -30,7 +29,8 @@ $("#stockbtn").on("click", async (e) => {
             const user = await fetch(`http://localhost:3000/stock/add/${id}/${stock}`, {
             method: 'GET',
             })
-            $("#stocks").append(`<li>${stock}</li>`)
+            const price = await getStockPrice(stock)
+            $("#stocklist").append(`<li class="list-group-item">${stock}: ${price}</li>`)
             $(".stockadd").attr("style","display:none")
             $(".stockinfo").attr("style","display:inline-block")
         }
@@ -40,6 +40,21 @@ $("#stockbtn").on("click", async (e) => {
     }
 })
 
+async function getStockPrice(symbol) {
+    try{
+        var url = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=1RYOT2M4HI7WUUS7`;
+        const data = await fetch(url)
+        const datajson = await data.json()
+        console.log(datajson)
+        const price = datajson['Global Quote']['02. open']
+        console.log(price)
+        return price
+    }catch(e) {
+        console.log("Error getting stock")
+        console.log(e)
+    }
+}
+
 //loads in stocks
 async function loadUserInfo() {
     try{
@@ -47,10 +62,11 @@ async function loadUserInfo() {
             method: 'GET',
         })
         const userdata = await user.json()
-        for(let i = 0; i < userdata.stock.length; i++) {
-            $("#stocks").append(`<li>${userdata.stock[i]}</li>`)
-        }
         $("#user").append(userdata.name)
+        for(let i = 0; i < userdata.stock.length; i++) {
+            const price = await getStockPrice(userdata.stock[i])
+            $("#stocklist").append(`<li class="list-group-item">${userdata.stock[i]}: ${price}</li>`)
+        }
     }
     catch (e) {
         console.log(e)

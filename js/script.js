@@ -56,10 +56,10 @@ $("#stockbtn").on("click", async (e) => {
 
 $("#test").on("click", async (e) => {
     try{
-        var url = 'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=5min&apikey=1RYOT2M4HI7WUUS7';
+        var url = 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=IBM&apikey=1RYOT2M4HI7WUUS7';
         const data = await fetch(url)
         const datajson = await data.json()
-        console.log(datajson)
+        console.log(datajson['Global Quote']['02. open'])
     }catch(e) {
         console.log("Error getting stock")
         console.log(e)
