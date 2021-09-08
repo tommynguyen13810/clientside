@@ -1,0 +1,10 @@
+@font-face {
+    font-family: "Barlow";
+    font-style: normal;
+    font-weight: 400;
+    src: url(BarlowSemiCondensed-Regular.otf);
+  }
+  
+  body{
+      font-family: "Barlow", sans-serif;
+  }

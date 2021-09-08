@@ -30,7 +30,7 @@ $("#stockbtn").on("click", async (e) => {
             method: 'GET',
             })
             const price = await getStockPrice(stock)
-            $("#stocklist").append(`<li class="list-group-item">${stock}: ${price}</li>`)
+            $("#stocklist").append(`<li class="list-group-item">${stock}: <span class="badge badge-success">${price}</span></li>`)
             $(".stockadd").attr("style","display:none")
             $(".stockinfo").attr("style","display:inline-block")
         }
@@ -45,9 +45,7 @@ async function getStockPrice(symbol) {
         var url = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=1RYOT2M4HI7WUUS7`;
         const data = await fetch(url)
         const datajson = await data.json()
-        console.log(datajson)
         const price = datajson['Global Quote']['02. open']
-        console.log(price)
         return price
     }catch(e) {
         console.log("Error getting stock")
@@ -65,7 +63,7 @@ async function loadUserInfo() {
         $("#user").append(userdata.name)
         for(let i = 0; i < userdata.stock.length; i++) {
             const price = await getStockPrice(userdata.stock[i])
-            $("#stocklist").append(`<li class="list-group-item">${userdata.stock[i]}: ${price}</li>`)
+            $("#stocklist").append(`<li class="list-group-item">${userdata.stock[i]}: <span class="badge badge-success">${price}</span></li>`)
         }
     }
     catch (e) {

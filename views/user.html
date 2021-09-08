@@ -6,24 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/user.css">
 </head>
 <body>
-    <h1>Hello User <span id="user"></span></h1>
-    <hr>
-    <div class="stockinfo">
-        <h2>Watching Current Stocks</h2>
-        <div id="stocks">
-            <ul class="list-group" id="stocklist"></ul>
+    <div class="text-center">
+        <nav class="navbar navbar-dark bg-dark justify-content-center mb-3">
+            <a class="navbar-brand " href="">
+              <img src="../image/man.png" width="30" height="30" class="d-inline-block align-top" alt="">
+              Hello <span id="user"></span>
+            </a>
+          </nav>
+        <div class="stockinfo">
+            <h2>Watching Current Stocks</h2>
+            <div id="stocks">
+                <ul class="list-group" id="stocklist"></ul>
+            </div>
+            <button class="btn btn-success" id="addstock">Add New Stock</button>
+            <button class="btn btn-secondary" onclick="window.location.href='./login.html'">Back to Login</button>
         </div>
-        <button class="btn btn-success" id="addstock">Add New Stock</button>
-        <button class="btn btn-secondary" onclick="window.location.href='./login.html'">Back to Login</button>
-    </div>
-    <div class="stockadd" style="display:none"> 
-        <label for="stock">Stock</label>
-        <input type="text" id="stock" name="stock" placeholder="Stock">
-        <button class="btn btn-success" id="stockbtn">Submit</button>
-        <button class="btn btn-danger" id="cancel">Cancel</button>
-        <div class="info"></div>
+        <div class="stockadd" style="display:none"> 
+            <label for="stock">Stock</label>
+            <input type="text" id="stock" name="stock" placeholder="Stock">
+            <button class="btn btn-success" id="stockbtn">Submit</button>
+            <button class="btn btn-danger" id="cancel">Cancel</button>
+            <div class="info"></div>
+        </div>
     </div>
     
 
